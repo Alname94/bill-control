@@ -12,4 +12,6 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Servidor funcionando correctamente" });
 });
 
+app.use(errorHandler);
+
 export default app;
