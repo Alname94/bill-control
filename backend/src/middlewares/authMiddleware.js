@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { query } from '../db.js';
+import { query } from '../config/db.js';
 
 // Validación de token JWT para proteger rutas
 const protegerRuta = async (req, res, next) => {
