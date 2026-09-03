@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const updateUserSchema = z.object({
   body: z.object({
-    nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres")
+    nombre: z.string().trim().min(2, "El nombre debe tener al menos 2 caracteres")
   })
 });
 
