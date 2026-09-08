@@ -8,8 +8,20 @@ export const createServicioService = async (usuarioId, datosServicio) => {
   return nuevoServicio;
 };
 
-export const getServiciosByUserService = async (usuarioId) => {
-  return await servicioModel.getServiciosByUser(usuarioId);
+// export const getServiciosByUserService = async (usuarioId) => {
+//   return await servicioModel.getServiciosByUser(usuarioId);
+// };
+
+export const getServiciosByUserService = async (usuarioId, queryParams = {}) => {
+  const page = parseInt(queryParams.page, 10) || 1;
+  const limit = parseInt(queryParams.limit, 10) || 10;
+
+  const opciones = {
+    page: page > 0 ? page : 1,
+    limit: limit > 0 && limit <= 100 ? limit : 10,
+  };
+
+  return await servicioModel.getServiciosByUser(usuarioId, opciones);
 };
 
 export const getServicioByIdService = async (id, usuarioId) => {

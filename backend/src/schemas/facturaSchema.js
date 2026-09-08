@@ -10,3 +10,19 @@ export const crearFacturaSchema = z.object({
     pagado: z.boolean().optional().default(false),
   }),
 });
+
+export const queryFacturasSchema = z.object({
+  params: z.object({
+    servicioId: z.string().transform((val) => parseInt(val, 10)).optional(),
+    id: z.string().optional(),
+  }).optional(),
+  
+  // Validar req.query
+  query: z.object({
+    page: z.string().optional().transform((val) => (val ? parseInt(val, 10) : 1)),
+    limit: z.string().optional().transform((val) => (val ? parseInt(val, 10) : 10)),
+    pagado: z.enum(['true', 'false']).optional(),
+    fechaDesde: z.iso.date().optional(),
+    fechaHasta: z.iso.date().optional(),
+  }),
+});

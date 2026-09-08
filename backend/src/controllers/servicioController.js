@@ -17,10 +17,10 @@ export const createServicio = async (req, res, next) => {
 export const getServiciosByUser = async (req, res, next) => {
   try {
     const usuarioId = req.usuario.id;
-    const resultado = await servicioService.getServiciosByUserService(usuarioId);
+    const resultado = await servicioService.getServiciosByUserService(usuarioId, req.query);
     res.status(200).json({
       ok: true,
-      data: resultado
+      data: resultado,
     });
   } catch (error) {
       next(error);
@@ -30,7 +30,7 @@ export const getServiciosByUser = async (req, res, next) => {
 export const getServicioById = async (req, res, next) => {
   try {
     const usuarioId = req.usuario.id;
-    const servicioId = req.params.id;
+    const servicioId = req.params?.id;
     const resultado = await servicioService.getServicioByIdService(servicioId, usuarioId);
     res.status(200).json({
       ok: true,
@@ -44,7 +44,7 @@ export const getServicioById = async (req, res, next) => {
 export const updateServicio = async (req, res, next) => {
   try {
     const usuarioId = req.usuario.id;
-    const servicioId = req.params.id;
+    const servicioId = req.params?.id;
     const datos = req.body;
     const resultado = await servicioService.updateServicioService(servicioId, usuarioId, datos);
     res.status(200).json({
@@ -59,7 +59,7 @@ export const updateServicio = async (req, res, next) => {
 
 export const deleteServicio = async (req, res, next) => {
   try {
-    const servicioId = req.params.id;
+    const servicioId = req.params?.id;
     const usuarioId = req.usuario.id;
     const resultado = await servicioService.deleteServicioService(servicioId, usuarioId);
     res.status(200).json({

@@ -1,4 +1,4 @@
-import * as facturaService from "../services/facturaService.js"
+import * as facturaService from "../services/facturaService.js";
 
 export const createFactura = async (req, res, next) => {
   try {
@@ -18,11 +18,15 @@ export const createFactura = async (req, res, next) => {
 export const getFacturasByServicio = async (req, res, next) => {
   try {
     const usuarioId = req.usuario.id;
-    const servicioId = req.params.id;
-    const resultado = await facturaService.getFacturasByServicioService(servicioId, usuarioId);
+    const servicioId = req.params?.servicioId ?? req.params?.id;
+
+    const resultado = await facturaService.getFacturasByServicioService(
+      servicioId, usuarioId, req.query);
+
     res.status(200).json({
       ok: true,
-      data: resultado,
+      data: resultado.facturas,
+      pagination: resultado.pagination,
     });
   } catch (error) {
       next(error);
@@ -32,7 +36,7 @@ export const getFacturasByServicio = async (req, res, next) => {
 export const getFacturaById = async (req, res, next) => {
   try {
     const usuarioId = req.usuario.id;
-    const id = req.params.id;
+    const id = req.params?.id;
     const resultado = await facturaService.getFacturaByIdService(id, usuarioId);
     res.status(200).json({
       ok: true,
@@ -46,7 +50,7 @@ export const getFacturaById = async (req, res, next) => {
 export const updateFactura = async (req, res, next) => {
   try {
     const usuarioId = req.usuario.id;
-    const id = req.params.id;
+    const id = req.params?.id;
     const datosFactura = req.body;
     const resultado = await facturaService.updateFacturaService(id, usuarioId, datosFactura);
     res.status(200).json({
@@ -62,7 +66,7 @@ export const updateFactura = async (req, res, next) => {
 export const deleteFactura = async (req, res, next) => {
   try {
     const usuarioId = req.usuario.id;
-    const id = req.params.id;
+    const id = req.params?.id;
     const resultado = await facturaService.deleteFacturaService(id, usuarioId);
     res.status(200).json({
       ok: true,
