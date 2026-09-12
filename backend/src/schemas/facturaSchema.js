@@ -17,7 +17,6 @@ export const queryFacturasSchema = z.object({
     id: z.string().optional(),
   }).optional(),
   
-  // Validar req.query
   query: z.object({
     page: z.string().optional().transform((val) => (val ? parseInt(val, 10) : 1)),
     limit: z.string().optional().transform((val) => (val ? parseInt(val, 10) : 10)),

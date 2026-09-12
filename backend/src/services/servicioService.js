@@ -8,10 +8,6 @@ export const createServicioService = async (usuarioId, datosServicio) => {
   return nuevoServicio;
 };
 
-// export const getServiciosByUserService = async (usuarioId) => {
-//   return await servicioModel.getServiciosByUser(usuarioId);
-// };
-
 export const getServiciosByUserService = async (usuarioId, queryParams = {}) => {
   const page = parseInt(queryParams.page, 10) || 1;
   const limit = parseInt(queryParams.limit, 10) || 10;
