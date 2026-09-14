@@ -47,10 +47,10 @@ describe('Suite de Pruebas: Módulo de Usuarios (/api/user)', () => {
     });
   });  
 
-  describe('PUT /api/user', () => {
+  describe('PATCH /api/user', () => {
     test('Debe actualizar el nombre del usuario correctamente', async () => {
       const response = await request(app)
-        .put('/api/user')
+        .patch('/api/user')
         .set('Authorization', `Bearer ${tokenUsuario}`)
         .send({ nombre: 'Nombre Actualizado' });
 
@@ -61,7 +61,7 @@ describe('Suite de Pruebas: Módulo de Usuarios (/api/user)', () => {
 
     test('Debe fallar al enviar un nombre con formato inválido (Zod validation)', async () => {
       const response = await request(app)
-        .put("/api/user")
+        .patch("/api/user")
         .set("Authorization", `Bearer ${tokenUsuario}`)
         .send({ nombre: "" });
 
@@ -72,7 +72,7 @@ describe('Suite de Pruebas: Módulo de Usuarios (/api/user)', () => {
     });
   });
 
-  describe('PUT /api/user/password', () => {
+  describe('PATCH /api/user/password', () => {
     let token;
 
     beforeEach(async () => {
@@ -87,7 +87,7 @@ describe('Suite de Pruebas: Módulo de Usuarios (/api/user)', () => {
 
     test("Debe actualizar el password del usuario correctamente", async () => {
       const response = await request(app)
-        .put("/api/user/password")
+        .patch("/api/user/password")
         .set("Authorization", `Bearer ${token}`)
         .send({
           passwordActual: "Password123!",
@@ -101,7 +101,7 @@ describe('Suite de Pruebas: Módulo de Usuarios (/api/user)', () => {
 
     test('Debe fallar al enviar un password con formato inválido (Zod validation)', async () => {
         const response = await request(app)
-        .put("/api/user/password")
+        .patch("/api/user/password")
         .set("Authorization", `Bearer ${token}`)
         .send({
           passwordActual: "Password123!",
@@ -116,7 +116,7 @@ describe('Suite de Pruebas: Módulo de Usuarios (/api/user)', () => {
     
     test("Debe fallar al enviar el password actual incorrecto", async () => {
       const response = await request(app)
-        .put("/api/user/password")
+        .patch("/api/user/password")
         .set("Authorization", `Bearer ${token}`)
         .send({
           passwordActual: "Password1",
