@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1789232958524" clover="3.2.0">
-  <project timestamp="1789232958525" name="All files">
-    <metrics statements="404" coveredstatements="384" conditionals="115" coveredconditionals="84" methods="67" coveredmethods="65" elements="586" coveredelements="533" complexity="0" loc="404" ncloc="404" packages="9" files="26" classes="26"/>
+<coverage generated="1789391861569" clover="3.2.0">
+  <project timestamp="1789391861569" name="All files">
+    <metrics statements="408" coveredstatements="388" conditionals="115" coveredconditionals="84" methods="67" coveredmethods="65" elements="590" coveredelements="537" complexity="0" loc="408" ncloc="408" packages="9" files="27" classes="27"/>
     <package name="src">
-      <metrics statements="12" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
+      <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
       <file name="app.js" path="C:\proyects\bill-control\backend\src\app.js">
-        <metrics statements="12" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="11" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="12" count="4" type="stmt"/>
+        <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="13" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="14" count="4" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
         <line num="18" count="4" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
         <line num="23" count="4" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="30" count="4" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.config">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="db.js" path="C:\proyects\bill-control\backend\src\config\db.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
         <line num="17" count="282" type="stmt"/>
+      </file>
+      <file name="swagger.js" path="C:\proyects\bill-control\backend\src\config\swagger.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="133" count="4" type="stmt"/>
+        <line num="138" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.controllers">
@@ -179,16 +186,16 @@
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="18" type="cond" truecount="1" falsecount="1"/>
         <line num="3" count="0" type="stmt"/>
-        <line num="18" count="18" type="cond" truecount="4" falsecount="0"/>
-        <line num="19" count="4" type="cond" truecount="1" falsecount="2"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="23" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="24" count="5" type="stmt"/>
-        <line num="25" count="5" type="stmt"/>
-        <line num="28" count="4" type="stmt"/>
-        <line num="36" count="14" type="cond" truecount="1" falsecount="1"/>
-        <line num="37" count="14" type="stmt"/>
+        <line num="6" count="18" type="cond" truecount="4" falsecount="0"/>
+        <line num="7" count="4" type="cond" truecount="1" falsecount="2"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="24" count="14" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="14" type="stmt"/>
       </file>
       <file name="validateRequest.js" path="C:\proyects\bill-control\backend\src\middlewares\validateRequest.js">
         <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
@@ -306,37 +313,37 @@
       <file name="authRoutes.js" path="C:\proyects\bill-control\backend\src\routes\authRoutes.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="6" count="4" type="stmt"/>
-        <line num="8" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
+        <line num="65" count="4" type="stmt"/>
+        <line num="120" count="4" type="stmt"/>
       </file>
       <file name="facturaRoutes.js" path="C:\proyects\bill-control\backend\src\routes\facturaRoutes.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="7" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
+        <line num="65" count="4" type="stmt"/>
+        <line num="100" count="4" type="stmt"/>
+        <line num="158" count="4" type="stmt"/>
+        <line num="196" count="4" type="stmt"/>
       </file>
       <file name="servicioRoutes.js" path="C:\proyects\bill-control\backend\src\routes\servicioRoutes.js">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="9" count="4" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="18" count="4" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="107" count="4" type="stmt"/>
+        <line num="142" count="4" type="stmt"/>
+        <line num="198" count="4" type="stmt"/>
+        <line num="236" count="4" type="stmt"/>
+        <line num="300" count="4" type="stmt"/>
       </file>
       <file name="usuarioRoutes.js" path="C:\proyects\bill-control\backend\src\routes\usuarioRoutes.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="7" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="81" count="4" type="stmt"/>
+        <line num="128" count="4" type="stmt"/>
+        <line num="159" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.schemas">
