@@ -29,3 +29,9 @@ API RESTful para la administración de servicios del hogar y control de vencimie
 * **Validación:** Zod
 * **Testing:** Jest, Supertest
 * **Documentación:** Swagger UI Express, Swagger JSDoc
+
+##
+> [!NOTE]
+> Proyecto en desarrollo.
+
+### Autor: [Alejo Méndez](https://github.com/Alname94)
