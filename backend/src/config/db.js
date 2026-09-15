@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Configuración del pool de conexiones a PostgreSQL.
+ * Administra la conexión serverless con Neon DB y maneja la configuración
+ * SSL requerida para entornos de producción y desarrollo local.
+ */
+
 import pg from "pg";
 import dotenv from "dotenv";
 

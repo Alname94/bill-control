@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Esquemas de validación con Zod para el módulo de Facturas.
+ * Modela y sanitiza las entradas para la creación de comprobantes y el
+ * filtrado/paginación en búsquedas de facturas.
+ */
+
 import { z } from "zod";
 
 export const crearFacturaSchema = z.object({
@@ -11,6 +17,12 @@ export const crearFacturaSchema = z.object({
   }),
 });
 
+/**
+ * Esquema para consulta, filtrado y paginación de facturas.
+ * 
+ * Permite filtrar por estado de pago (`true`/`false`), rango de fechas de vencimiento
+ * y maneja la conversión automática de parámetros de paginación (`page` y `limit`).
+ */
 export const queryFacturasSchema = z.object({
   params: z.object({
     servicioId: z.string().transform((val) => parseInt(val, 10)).optional(),

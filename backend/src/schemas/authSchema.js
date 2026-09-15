@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Esquemas de validación con Zod para el módulo de Autenticación.
+ * Define las reglas de validación y sanitización para los datos recibidos en
+ * el registro e inicio de sesión de usuarios.
+ */
+
 import { z } from "zod";
 
 export const registroSchema = z.object({

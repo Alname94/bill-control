@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Configuración de Swagger para la documentación de la API.
+ * Define la estructura de la documentación, incluyendo información general,
+ * servidores, esquemas de seguridad y modelos de datos (Usuario, Servicio, Factura).
+ */
+
 import swaggerJSDoc from "swagger-jsdoc";
 
 const swaggerDefinition = {

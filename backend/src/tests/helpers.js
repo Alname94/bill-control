@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Utilidades y Helpers para Pruebas de Integración (Testing).
+ * Proporciona constantes de usuarios de prueba, funciones para generación
+ * de tokens JWT y tareas de limpieza/sembrado para la base de datos de test.
+ */
+
 import jwt from "jsonwebtoken";
 import { query } from "../config/db.js";
 

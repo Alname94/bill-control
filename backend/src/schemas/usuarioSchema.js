@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Esquemas de validación con Zod para la actualización de perfil de usuario.
+ * Define las reglas de validación para modificar los datos personales (nombre)
+ * y el cambio seguro de contraseña del usuario autenticado.
+ */
+
 import { z } from 'zod';
 
 export const updateUserSchema = z.object({
