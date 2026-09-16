@@ -101,8 +101,8 @@ router.patch('/', validateRequest(updateUserSchema), updateUsuario);
  *               passwordActual:
  *                 type: string
  *                 format: password
- *                 example: "PasswordViejo123!"
- *               nuevaPassword:
+ *                 example: "PasswordSeguro123!"
+ *               passwordNuevo:
  *                 type: string
  *                 format: password
  *                 example: "NuevaPassword456!"
