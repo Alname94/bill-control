@@ -17,9 +17,39 @@ import { swaggerSpec } from "./config/swagger.js";
 const app = express();
 
 /**
+ * Configuración de CORS para permitir solicitudes desde el cliente web.
+ * Se define una lista de orígenes permitidos y se valida cada solicitud entrante.
+ */
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "http://localhost:8080",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
+/**
+ * Opciones de configuración de CORS.
+ * Se permite el acceso a los orígenes especificados, métodos HTTP y cabeceras.
+ */
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(
+        new Error(`CORS bloqueado: El origen ${origin} no está permitido.`),
+      );
+    }
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+/**
  * Configuración de CORS para permitir peticiones desde el cliente web.
  */
-app.use(cors({origin: process.env.CLIENT_URL || "http://localhost:5173", credentials: true,}));
+app.use(cors(corsOptions));
 
 /**
  * Middleware para parsear el cuerpo de las peticiones entrantes en formato JSON.
@@ -33,7 +63,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /**
  * Endpoint de verificación de estado del servidor (Health Check).
- * 
+ *
  * @name GET/api/health
  * @function
  * @param {import('express').Request} req - Petición Express.
