@@ -16,7 +16,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: process.env.RENDER_EXTERNAL_URL || `http://localhost:${process.env.PORT || 8080}`,
+      url: (process.env.RENDER_EXTERNAL_URL || `http://localhost:${process.env.PORT || 8080}`) + "/api",
       description: process.env.NODE_ENV === "production" ? "Servidor Producción" : "Servidor Local",
     },
   ],
