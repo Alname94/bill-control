@@ -26,7 +26,7 @@ API RESTful para la administración de servicios del hogar y control de vencimie
 
 - **Manejo de Errores Unificado:** Middleware centralizado para respuestas estándar.
 
-- **Documentación OpenAPI 3.0:** Consola interactiva con **Swagger UI** accesible directamente desde el navegador ingresando a `https://backend-bill-control.onrender.com/api-docs/` (Puede demorar un par de minutos en conectarse con Render).
+- **Documentación OpenAPI 3.0:** Consola interactiva con **Swagger UI** accesible directamente desde el navegador ingresando a [https://backend-bill-control.onrender.com/api-docs/](https://backend-bill-control.onrender.com/api-docs/) (Puede demorar un par de minutos en conectarse con Render).
 
 ---
 
