@@ -1,7 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../api/axios";
 
-const AuthContext = createContext(null);
+// eslint-disable-next-line react-refresh/only-export-components
+export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -10,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initAuth = () => {
       const token = localStorage.getItem("token");
-      const storedUser = localStorage.getItem("user");
+      const storedUser = localStorage.getItem("usuario");
 
       if(token && storedUser) {
         try {
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
           console.error("Error al parsear el usuario del localStorage:", error);
           localStorage.removeItem("token");
-          localStorage.removeItem("user");
+          localStorage.removeItem("usuario");
         }
       }
       setLoading(false);
@@ -29,12 +30,12 @@ export const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       const response = await api.post("/auth/login", credentials);
-      const { token, user: userData } = response.data;
+      const { token, usuario } = response.data;
 
       localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem("usuario", JSON.stringify(usuario));
 
-      setUser(userData);
+      setUser({...usuario});
       return {ok: true, data: response.data};
     } catch (error) {
       const message = error.response?.data?.error || "Error al iniciar sesión";
@@ -44,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem("usuario");
     setUser(null);
   };
 
