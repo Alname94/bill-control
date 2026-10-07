@@ -6,6 +6,7 @@ import { Error404 } from "./components/Error404";
 import { Navbar } from "./components/Navbar";
 import { Services } from "./components/Services";
 import { Bills } from "./components/Bills";
+import { Toaster } from "sonner";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           </Route>
           <Route path={"*"} element={<Error404 />} />
         </Routes>
+        <Toaster />
       </main>
     </div>
   );
