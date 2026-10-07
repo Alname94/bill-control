@@ -23,7 +23,7 @@ const App = () => {
           </Route>
           <Route path={"*"} element={<Error404 />} />
         </Routes>
-        <Toaster />
+        <Toaster richColors />
       </main>
     </div>
   );
