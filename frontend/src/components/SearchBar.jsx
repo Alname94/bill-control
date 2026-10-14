@@ -1,4 +1,4 @@
-export const SearchBar = ({ searchTerm, setSearchTerm }) => {
+export const SearchBar = ({ searchTerm, setSearchTerm, placeholderText }) => {
   return (
     <div className="row g-2 mb-4">
       {/* Búsqueda por texto */}
@@ -6,7 +6,7 @@ export const SearchBar = ({ searchTerm, setSearchTerm }) => {
         <input
           type="text"
           className="form-control"
-          placeholder="Buscar por nombre o N° de cliente..."
+          placeholder={placeholderText}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           maxLength={100}

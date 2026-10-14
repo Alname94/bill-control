@@ -14,7 +14,7 @@ export const Services = () => {
   // Estado de Búsqueda
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Estados para el Modal (Crear / Editar)
+  // Estados para el Modal
   const [showModal, setShowModal] = useState(false);
   const [servicioEditando, setServicioEditando] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -119,7 +119,6 @@ export const Services = () => {
     }
   };
 
-  // Handler de Eliminación
   const handleDeleteRequest = (servicio) => {
     setConfirmConfig({
       title: "Eliminar servicio",
@@ -145,7 +144,6 @@ export const Services = () => {
     }
   };
 
-  // Filtrado Seguro en Memoria
   const serviciosFiltrados = servicios.filter((s) => {
     const termino = searchTerm.toLowerCase().trim();
 
@@ -178,7 +176,7 @@ export const Services = () => {
       </div>
 
       {/* Filtros */}
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholderText={"Buscar por nombre o N° de cliente..."} />
 
       {error && <div className="alert alert-danger mb-4">{error}</div>}
 
