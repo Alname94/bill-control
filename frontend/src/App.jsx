@@ -19,11 +19,12 @@ const App = () => {
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:servicioId/bills" element={<Bills />} />
             <Route path="/bills" element={<Bills />} />
           </Route>
           <Route path={"*"} element={<Error404 />} />
         </Routes>
-        <Toaster richColors />
+        <Toaster richColors position="bottom-right" closeButton />
       </main>
     </div>
   );

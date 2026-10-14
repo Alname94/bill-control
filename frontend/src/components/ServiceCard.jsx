@@ -1,5 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 export const ServiceCard = ({ servicio, onEdit, onDelete, isDeleting }) => {
   const { id, nombre, nroCliente, activo } = servicio;
+  const navigate = useNavigate();
+
+  const handleVerFacturas = () => {
+    navigate(`/services/${servicio.id}/bills`, { state: { servicio } });
+  };
 
   return (
     <div className="card h-100 border-0 shadow">
@@ -19,6 +26,13 @@ export const ServiceCard = ({ servicio, onEdit, onDelete, isDeleting }) => {
         </div>
 
         <div className="d-flex justify-content-end gap-2 pt-2 border-top">
+          <button
+            className="btn btn-outline-dark btn-sm fw-semibold"
+            onClick={handleVerFacturas}
+          >
+            Ver Facturas →
+          </button>
+
           <button
             className="btn btn-sm btn-outline-primary"
             onClick={() => onEdit(servicio)}

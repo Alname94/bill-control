@@ -26,3 +26,8 @@ export const deleteServicio = async (id) => {
   const response = await api.delete(`${ENDPOINT}/${id}`);
   return response.data;
 };
+
+export const getFacturasByServicio = async (id) => {
+  const response = await api.get(`${ENDPOINT}/${id}/bills`);
+  return response.data;
+}

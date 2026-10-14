@@ -93,7 +93,7 @@ export const Services = () => {
       toast.success("Servicio creado correctamente");
     } catch (err) {
       console.error("Error al crear servicio:", err);
-      toast.error("Ocurrió un error al crear el servicio.");
+      toast.error(err.response?.data?.error || "Ocurrió un error al crear el servicio.");
     } finally {
       setSubmitting(false);
     }
@@ -113,7 +113,7 @@ export const Services = () => {
       handleCloseModal();
     } catch (err) {
       console.error("Error al actualizar servicio:", err);
-      toast.error("Ocurrió un error al actualizar el servicio.");
+      toast.error(err.response?.data?.details?.nombre || "Ocurrió un error al actualizar el servicio.");
     } finally {
       setConfirmLoading(false);
     }
@@ -139,7 +139,7 @@ export const Services = () => {
       toast.success("Servicio eliminado correctamente");
     } catch (err) {
       console.error("Error al eliminar servicio:", err);
-      toast.error("Error al eliminar el servicio.");
+      toast.error(err.response?.data?.error || "Error al eliminar el servicio.");
     } finally {
       setConfirmLoading(false);
     }
