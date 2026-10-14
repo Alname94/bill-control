@@ -49,13 +49,6 @@ export const Navbar = () => {
                     Servicios
                   </NavLink>
                 </li>
-                <li className="nav-item col-6 col-lg-auto">
-                  <NavLink className={({ isActive }) => `nav-link py-2 px-0 px-lg-2 ${isActive ? "active" : ""}`}
-                    to="/bills"
-                  > 
-                    Facturas
-                  </NavLink>
-                </li>
               </ul>
 
               {/* Botones de Usuario y Logout al extremo derecho */}
