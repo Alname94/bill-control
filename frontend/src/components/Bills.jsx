@@ -29,23 +29,29 @@ export const Bills = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   useEffect(() => {
-    let ignore = false;
+    let ignorarRespuesta = false;
 
     const fetchFacturas = async () => {
       try {
         setLoading(true);
         const data = await getFacturasByServicio(servicioId);
-        if (!ignore) {
+        if (!ignorarRespuesta) {
           setFacturas(data.facturas || data || []);
           setError(null);
+
+          const facturaState = location.state?.facturaAEditar;
+          if (facturaState) {
+            setFacturaEditando(facturaState);
+            setShowModal(true);
+          }
         }
       } catch (err) {
         console.error('Error al obtener facturas:', err);
-        if (!ignore) {
+        if (!ignorarRespuesta) {
           setError('No se pudieron cargar las facturas de este servicio.');
         }
       } finally {
-        if (!ignore) {
+        if (!ignorarRespuesta) {
           setLoading(false);
         }
       }
@@ -56,9 +62,9 @@ export const Bills = () => {
     }
 
     return () => {
-      ignore = true;
+      ignorarRespuesta = true;
     };
-  }, [servicioId]);
+  }, [servicioId, location.state]);
 
   const handleOpenCreate = () => {
     setFacturaEditando(null);

@@ -48,7 +48,7 @@ export const BillModal = ({ servicioId, facturaEditando = null, onClose, onSubmi
         <div className="modal-content shadow">
           <div className="modal-header">
             <h5 className="modal-title fw-bold">
-              {isEditing ? "Editar Factura" : "Nueva Factura"}
+              {isEditing ? `Editar Factura #${facturaEditando.id}` : "Nueva Factura"}
             </h5>
             <button type="button" className="btn-close" onClick={onClose} disabled={submitting}></button>
           </div>
