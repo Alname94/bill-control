@@ -7,6 +7,7 @@ import { BillCard } from './BillCard';
 import { BillModal } from './BillModal';
 import { ConfirmModal } from './ConfirmModal';
 import { toast } from 'sonner';
+import { logger } from "../utils/logger";
 
 export const Bills = () => {
   const { servicioId } = useParams();
@@ -46,7 +47,7 @@ export const Bills = () => {
           }
         }
       } catch (err) {
-        console.error('Error al obtener facturas:', err);
+        logger.error('Error al obtener facturas:', err);
         if (!ignorarRespuesta) {
           setError('No se pudieron cargar las facturas de este servicio.');
         }
@@ -103,7 +104,7 @@ export const Bills = () => {
       handleCloseModal();
       toast.success('Factura agregada correctamente');
     } catch (err) {
-      console.error('Error al crear factura:', err);
+      logger.error('Error al crear factura:', err);
       toast.error(err.response?.data?.error || 'No se pudo registrar la factura.');
     } finally {
       setSubmitting(false);
@@ -123,7 +124,7 @@ export const Bills = () => {
       handleCloseModal();
       toast.success('Factura actualizada correctamente');
     } catch (err) {
-      console.error('Error al actualizar factura:', err);
+      logger.error('Error al actualizar factura:', err);
       toast.error('Ocurrió un error al actualizar la factura.');
     } finally {
       setConfirmLoading(false);
@@ -148,7 +149,7 @@ export const Bills = () => {
       setConfirmConfig(null);
       toast.success("Factura eliminada correctamente");
     } catch (err) {
-      console.error("Error al eliminar factura:", err);
+      logger.error("Error al eliminar factura:", err);
       toast.error(err.response?.data?.error || "Error al eliminar la factura.");
     } finally {
       setConfirmLoading(false);

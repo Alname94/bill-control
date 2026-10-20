@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getServiciosByUser, getFacturasByServicio } from '../services/servicioService.js';
 import { LoadingSpinner } from './LoadingSpinner.jsx';
 import { toast } from 'sonner';
+import { logger } from '../utils/logger.js';
 
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -27,7 +28,7 @@ export const Dashboard = () => {
             const facturas = resBills.facturas || resBills || [];
             return facturas.map((f) => ({ ...f, nombreServicio: servicio.nombre }));
           } catch (err) {
-            console.error(`Error al cargar facturas del servicio ${servicio.id}:`, err);
+            logger.error(`Error al cargar facturas del servicio ${servicio.id}:`, err);
             return [];
           }
         });
@@ -55,7 +56,7 @@ export const Dashboard = () => {
         setTotalMes(sumaTotalMes);
 
       } catch (err) {
-        console.error('Error al cargar datos del dashboard:', err);
+        logger.error('Error al cargar datos del dashboard:', err);
         toast.error('No se pudieron cargar los datos del dashboard.');
       } finally {
         if (!ignorarRespuesta) {

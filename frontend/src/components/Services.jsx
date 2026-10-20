@@ -5,6 +5,7 @@ import { SearchBar } from './SearchBar';
 import { ServiceCard } from './ServiceCard';
 import { ServiceModal } from './ServiceModal';
 import { ConfirmModal } from './ConfirmModal';
+import { logger } from '../utils/logger';
 
 export const Services = () => {
   const [servicios, setServicios] = useState([]);
@@ -36,7 +37,7 @@ export const Services = () => {
           setError(null);
         }
       } catch (err) {
-        console.error('Error al obtener servicios:', err);
+        logger.error('Error al obtener servicios:', err);
         if (!ignorarRespuesta) {
           setError('No se pudieron cargar los servicios.');
         }
@@ -92,7 +93,7 @@ export const Services = () => {
       handleCloseModal();
       toast.success("Servicio creado correctamente");
     } catch (err) {
-      console.error("Error al crear servicio:", err);
+      logger.error("Error al crear servicio:", err);
       toast.error(err.response?.data?.error || "Ocurrió un error al crear el servicio.");
     } finally {
       setSubmitting(false);
@@ -112,8 +113,8 @@ export const Services = () => {
       toast.success("Servicio actualizado correctamente");
       handleCloseModal();
     } catch (err) {
-      console.error("Error al actualizar servicio:", err);
-      toast.error(err.response?.data?.details?.nombre || "Ocurrió un error al actualizar el servicio.");
+      logger.error("Error al actualizar servicio:", err);
+      toast.error(err.response?.data?.error ||"Ocurrió un error al actualizar el servicio.");
     } finally {
       setConfirmLoading(false);
     }
@@ -137,7 +138,7 @@ export const Services = () => {
       setConfirmConfig(null);
       toast.success("Servicio eliminado correctamente");
     } catch (err) {
-      console.error("Error al eliminar servicio:", err);
+      logger.error("Error al eliminar servicio:", err);
       toast.error(err.response?.data?.error || "Error al eliminar el servicio.");
     } finally {
       setConfirmLoading(false);
