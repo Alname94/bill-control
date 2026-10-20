@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../api/axios";
+import { logger } from "../utils/logger";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
@@ -17,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         try {
           setUser(JSON.parse(storedUser));
         } catch (error) {
-          console.error("Error al parsear el usuario del localStorage:", error);
+          logger.error("Error al parsear el usuario del localStorage:", error);
           localStorage.removeItem("token");
           localStorage.removeItem("usuario");
         }
@@ -43,11 +44,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const register = async (credentials) => {
+    try {
+      const response = await api.post("/auth/register", credentials);
+      const { token, usuario } = response.data;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+
+      setUser({ ...usuario });
+      return { ok: true, data: response.data };
+    } catch (error) {
+      const message = error.response?.data?.error || "Error al registrar la cuenta";
+      return { ok: false, error: message };
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
     setUser(null);
   };
 
-  return (<AuthContext.Provider value={{user, isAuthenticated: !!user, loading, login, logout}}> {children} </AuthContext.Provider>);
+  return (<AuthContext.Provider value={{user, isAuthenticated: !!user, loading, login, register, logout}}> {children} </AuthContext.Provider>);
 };

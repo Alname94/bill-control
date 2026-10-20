@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { Dashboard } from "./components/Dashboard";
-import { Login } from "./components/Login";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { Error404 } from "./components/Error404";
 import { Navbar } from "./components/Navbar";
 import { Services } from "./components/Services";
 import { Bills } from "./components/Bills";
 import { Toaster } from "sonner";
+import { Auth } from "./components/Auth";
 
 const App = () => {
   return (
@@ -14,7 +14,8 @@ const App = () => {
       <Navbar />
       <main className="d-flex flex-column flex-grow-1">
         <Routes>
-          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/login" element={<Auth />} />
+          <Route path="/auth/register" element={<Auth />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
