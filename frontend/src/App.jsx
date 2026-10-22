@@ -7,6 +7,7 @@ import { Services } from "./components/Services";
 import { Bills } from "./components/Bills";
 import { Toaster } from "sonner";
 import { Auth } from "./components/Auth";
+import { Profile } from "./components/Profile";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:servicioId/bills" element={<Bills />} />
+            <Route path="/user" element={<Profile />} />
           </Route>
           <Route path={"*"} element={<Error404 />} />
         </Routes>
