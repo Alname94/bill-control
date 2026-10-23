@@ -50,8 +50,7 @@ export const getFacturasByServicio = async (req, res, next) => {
 
     res.status(200).json({
       ok: true,
-      data: resultado.facturas,
-      pagination: resultado.pagination,
+      data: resultado
     });
   } catch (error) {
       next(error);
