@@ -2,8 +2,8 @@ import api from "../api/axios";
 
 const ENDPOINT = '/services';
 
-export const getServiciosByUser = async () => {
-  const response = await api.get(ENDPOINT);
+export const getServiciosByUser = async (params = {}) => {
+  const response = await api.get(ENDPOINT, { params });
   return response.data;
 };
 
@@ -27,7 +27,7 @@ export const deleteServicio = async (id) => {
   return response.data;
 };
 
-export const getFacturasByServicio = async (id) => {
-  const response = await api.get(`${ENDPOINT}/${id}/bills`);
+export const getFacturasByServicio = async (id, params = {}) => {
+  const response = await api.get(`${ENDPOINT}/${id}/bills`, { params });
   return response.data;
 }

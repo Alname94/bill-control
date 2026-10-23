@@ -5,12 +5,17 @@ import { SearchBar } from './SearchBar';
 import { ServiceCard } from './ServiceCard';
 import { ServiceModal } from './ServiceModal';
 import { ConfirmModal } from './ConfirmModal';
+import { PaginationCard } from "./PaginationCard";
 import { logger } from '../utils/logger';
 
 export const Services = () => {
   const [servicios, setServicios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Estados de Paginación
+  const [page, setPage] = useState(1);
+  const [pagination, setPagination] = useState(null);
 
   // Estado de Búsqueda
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,9 +36,10 @@ export const Services = () => {
     const fetchServicios = async () => {
       try {
         setLoading(true);
-        const data = await getServiciosByUser();
+        const data = await getServiciosByUser({ page });
         if (!ignorarRespuesta) {
           setServicios(data.servicios || []);
+          setPagination(data.pagination || null);
           setError(null);
         }
       } catch (err) {
@@ -53,7 +59,7 @@ export const Services = () => {
     return () => {
       ignorarRespuesta = true;
     };
-  }, []);
+  }, [page]);
 
   // Controladores del Modal
   const handleOpenCreate = () => {
@@ -205,6 +211,12 @@ export const Services = () => {
               />
             </div>
           ))}
+          
+          {/* Card de Paginación que ocupa el espacio sobrante de la última fila */}
+          <PaginationCard
+            pagination={pagination}
+            onPageChange={(newPage) => setPage(newPage)}
+          />
         </div>
       )}
 

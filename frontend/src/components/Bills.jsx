@@ -6,6 +6,7 @@ import { SearchBar } from "./SearchBar";
 import { BillCard } from './BillCard';
 import { BillModal } from './BillModal';
 import { ConfirmModal } from './ConfirmModal';
+import { PaginationCard } from "./PaginationCard";
 import { toast } from 'sonner';
 import { logger } from "../utils/logger";
 
@@ -15,6 +16,10 @@ export const Bills = () => {
   const navigate = useNavigate();
 
   const servicioInfo = location.state?.servicio;
+
+  // Estados de Paginación
+  const [page, setPage] = useState(1);
+  const [pagination, setPagination] = useState(null);
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,9 +40,10 @@ export const Bills = () => {
     const fetchFacturas = async () => {
       try {
         setLoading(true);
-        const data = await getFacturasByServicio(servicioId);
+        const data = await getFacturasByServicio(servicioId, { page });
         if (!ignorarRespuesta) {
           setFacturas(data.facturas || data || []);
+          setPagination(data.pagination || null);
           setError(null);
 
           const facturaState = location.state?.facturaAEditar;
@@ -65,7 +71,7 @@ export const Bills = () => {
     return () => {
       ignorarRespuesta = true;
     };
-  }, [servicioId, location.state]);
+  }, [servicioId, location.state, page]);
 
   const handleOpenCreate = () => {
     setFacturaEditando(null);
@@ -133,7 +139,7 @@ export const Bills = () => {
 
   const handleDeleteRequest = (factura) => {
     setConfirmConfig({
-      title: "Eliminar servicio",
+      title: "Eliminar factura",
       message: `¿Seguro quiere eliminar la factura "${factura.id}"? Esta acción no se puede deshacer.`,
       confirmText: "Sí, eliminar",
       variant: "danger",
@@ -204,9 +210,11 @@ export const Bills = () => {
             <span className="visually-hidden">Cargando facturas...</span>
           </div>
         </div>
-      ) : facturas.length === 0 ? (
+      ) : facturasFiltradas.length === 0 ? (
         <div className="alert alert-info text-center py-4">
-          No hay facturas registradas para este servicio.
+          {facturas.length === 0
+            ? "No tenés facturas registradas todavía."
+            : "No se encontraron facturas que coincidan con la búsqueda."}
         </div>
       ) : (
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
@@ -218,6 +226,12 @@ export const Bills = () => {
               />
             </div>
           ))}
+
+          {/* Card de Paginación que ocupa el espacio sobrante de la última fila */}
+          <PaginationCard
+            pagination={pagination}
+            onPageChange={(newPage) => setPage(newPage)}
+          />
         </div>
       )}
 
