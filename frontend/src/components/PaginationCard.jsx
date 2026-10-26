@@ -6,7 +6,7 @@
  * @param {Function} props.onPageChange - Callback que recibe el número de la nueva página seleccionada.
  */
 export const PaginationCard = ({ pagination, onPageChange }) => {
-  if (!pagination) return null;
+  if (!pagination || pagination.totalPages <= 1) return null;
 
   const { page = 1, totalPages = 1, total = 0 } = pagination;
 

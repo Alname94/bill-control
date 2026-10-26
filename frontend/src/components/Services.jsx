@@ -95,7 +95,11 @@ export const Services = () => {
     try {
       setSubmitting(true);
       const nuevoServicio = await createServicio(formData);
-      setServicios((prev) => [nuevoServicio, ...prev]);
+      setServicios((prev) => {
+        const nuevaLista = [nuevoServicio, ...prev];
+        setPagination((p) => p ? { ...p, total: p.total + 1, totalPages: Math.ceil((p.total + 1) / p.limit) } : null);
+        return nuevaLista;
+      });
       handleCloseModal();
       toast.success("Servicio creado correctamente");
     } catch (err) {
@@ -140,7 +144,11 @@ export const Services = () => {
     try {
       setConfirmLoading(true);
       await deleteServicio(id);
-      setServicios((prev) => prev.filter((s) => s.id !== id));
+      setServicios((prev) => {
+        const nuevaLista = prev.filter((s) => s.id !== id);
+        setPagination((p) => p ? { ...p, total: Math.max(0, p.total - 1), totalPages: Math.ceil(Math.max(0, p.total - 1) / p.limit) } : null);
+        return nuevaLista;
+      });
       setConfirmConfig(null);
       toast.success("Servicio eliminado correctamente");
     } catch (err) {
@@ -151,7 +159,9 @@ export const Services = () => {
     }
   };
 
-  const serviciosFiltrados = servicios.filter((s) => {
+  const serviciosFiltrados = servicios
+    .sort((a, b) => a.nombre.localeCompare(b.nombre))
+    .filter((s) => {
     const termino = searchTerm.toLowerCase().trim();
 
     const nombreMatch = s?.nombre

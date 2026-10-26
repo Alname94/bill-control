@@ -106,7 +106,11 @@ export const Bills = () => {
     try {
       setSubmitting(true);
       const nuevaFactura = await createFactura(formData);
-      setFacturas((prev) => [nuevaFactura, ...prev]);
+      setFacturas((prev) => {
+        const nuevaLista = [nuevaFactura, ...prev];
+        setPagination((p) => p ? { ...p, total: p.total + 1, totalPages: Math.ceil((p.total + 1) / p.limit) } : null);
+        return nuevaLista;
+      });
       handleCloseModal();
       toast.success('Factura agregada correctamente');
     } catch (err) {
@@ -151,7 +155,11 @@ export const Bills = () => {
     try {
       setConfirmLoading(true);
       await deleteFactura(id);
-      setFacturas((prev) => prev.filter((f) => f.id !== id));
+      setFacturas((prev) => {
+        const nuevaLista = prev.filter((s) => s.id !== id);
+        setPagination((p) => p ? { ...p, total: Math.max(0, p.total - 1), totalPages: Math.ceil(Math.max(0, p.total - 1) / p.limit) } : null);
+        return nuevaLista;
+      });
       setConfirmConfig(null);
       toast.success("Factura eliminada correctamente");
     } catch (err) {
@@ -162,7 +170,9 @@ export const Bills = () => {
     }
   }
 
-  const facturasFiltradas = facturas.filter((f) => {
+  const facturasFiltradas = facturas
+    .sort((a, b) => new Date(b.creadoEn) - new Date(a.creadoEn))
+    .filter((f) => {
     const termino = searchTerm.toLowerCase().trim();
 
     const idMatch = f?.id
