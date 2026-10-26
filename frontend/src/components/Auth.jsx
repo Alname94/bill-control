@@ -48,13 +48,13 @@ export const Auth = () => {
       const result = isRegistering ? await register(formData) : await login(formData);
       if (!result.ok) {
         setErrorMessage(result.error);
-        setFormData({ email: "", password: "" });
+        setFormData({ nombre: "", email: "", password: "" });
         setIsSubmitting(false);
       }
     // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setErrorMessage("Ocurrió un error inesperado");
-      setFormData({ email: "", password: "" });
+      setFormData({ nombre: "", email: "", password: "" });
       setIsSubmitting(false);
     }
   };
@@ -79,7 +79,7 @@ export const Auth = () => {
                   className="form-control" 
                   id="nombre" 
                   name="nombre" 
-                  value={formData.nombre} 
+                  value={formData.nombre || ""} 
                   onChange={handleChange} 
                   placeholder="Tu nombre" 
                   required={isRegistering} 
@@ -96,7 +96,7 @@ export const Auth = () => {
                 className="form-control" 
                 id="email" 
                 name="email" 
-                value={formData.email} 
+                value={formData.email || ""} 
                 onChange={handleChange} 
                 placeholder="nombre@ejemplo.com" 
                 required 
@@ -112,7 +112,7 @@ export const Auth = () => {
                 className="form-control" 
                 id="password" 
                 name="password" 
-                value={formData.password}
+                value={formData.password || ""}
                 onChange={handleChange} 
                 placeholder="••••••••" 
                 required 
