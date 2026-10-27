@@ -55,7 +55,7 @@ App Full-Stack desarrollada para la administración integral de servicios del ho
 ## 🛠️ Tecnologías Utilizadas
 
 - **Frontend:** 
-  - React (Functional Components & Custom Hooks)
+  - React
   - Vite (Bundler y entorno de desarrollo)
   - React Router DOM (Ruteo protegido)
   - Axios (Cliente HTTP con interceptores globales)
