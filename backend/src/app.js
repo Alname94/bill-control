@@ -26,6 +26,7 @@ const allowedOrigins = [
   "http://localhost:8080",
   process.env.FRONTEND_URL,
   process.env.VERCEL_EXTERNAL_URL,
+  process.env.BACKEND_EXTERNAL_URL,
 ].filter(Boolean);
 
 /**
