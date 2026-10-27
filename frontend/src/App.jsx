@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Dashboard } from "./components/Dashboard";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { Error404 } from "./components/Error404";
@@ -15,6 +15,7 @@ const App = () => {
       <Navbar />
       <main className="d-flex flex-column flex-grow-1">
         <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/auth/login" element={<Auth />} />
           <Route path="/auth/register" element={<Auth />} />
 
