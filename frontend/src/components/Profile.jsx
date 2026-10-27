@@ -3,6 +3,7 @@ import { getUsuario, updateUsuario, updatePassword, deleteUsuario } from "../ser
 import { useAuth } from "../hooks/useAuth";
 import { toast } from "sonner";
 import { logger } from "../utils/logger";
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 
 export const Profile = () => {
   const { logout, updateUserContext } = useAuth();
@@ -22,6 +23,8 @@ export const Profile = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteConfirmationText, setDeleteConfirmationText] = useState("");
   const [deleting, setDeleting] = useState(false);
+
+  useDocumentTitle("Mi Perfil");
 
   useEffect(() => {
     const fetchProfile = async () => {

@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 
 export const Error404 = () => {
   const { isAuthenticated } = useAuth();
 
   const targetRoute = isAuthenticated ? "/dashboard" : "/auth/login";
   const buttonText = isAuthenticated ? "Volver al Dashboard" : "Ir al Inicio de Sesión";
+
+  useDocumentTitle("Página no encontrada");
 
   return (
     <div className="container-fluid flex-grow-1 d-flex justify-content-center align-items-center bg-secondary py-4">

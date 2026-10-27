@@ -7,6 +7,7 @@ import { ServiceModal } from './ServiceModal';
 import { ConfirmModal } from './ConfirmModal';
 import { PaginationCard } from "./PaginationCard";
 import { logger } from '../utils/logger';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 
 export const Services = () => {
   const [servicios, setServicios] = useState([]);
@@ -28,6 +29,8 @@ export const Services = () => {
   // Estados para el Modal de Confirmación
   const [confirmConfig, setConfirmConfig] = useState(null);
   const [confirmLoading, setConfirmLoading] = useState(false);
+
+  useDocumentTitle("Servicios");
 
   // Carga de datos
   useEffect(() => {

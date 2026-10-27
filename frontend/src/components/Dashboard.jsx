@@ -4,12 +4,15 @@ import { getServiciosByUser, getFacturasByServicio } from '../services/servicioS
 import { LoadingSpinner } from './LoadingSpinner.jsx';
 import { toast } from 'sonner';
 import { logger } from '../utils/logger.js';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [facturasPendientes, setFacturasPendientes] = useState([]);
   const [totalPendiente, setTotalPendiente] = useState(0);
   const [totalMes, setTotalMes] = useState(0);
+
+  useDocumentTitle("Dashboard");
 
   useEffect(() => {
     let ignorarRespuesta = false;

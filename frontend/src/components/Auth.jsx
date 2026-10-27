@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 
 export const Auth = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,8 @@ export const Auth = () => {
   const [isRegistering, setIsRegistering] = useState(location.pathname.includes("register"));
   
   const from = location.state?.from?.pathname || "/dashboard";
+
+  useDocumentTitle(isRegistering ? "Registrarse" : "Iniciar Sesión");
   
   useEffect(() => {
     if (isAuthenticated) {

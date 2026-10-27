@@ -9,6 +9,7 @@ import { ConfirmModal } from './ConfirmModal';
 import { PaginationCard } from "./PaginationCard";
 import { toast } from 'sonner';
 import { logger } from "../utils/logger";
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 
 export const Bills = () => {
   const { servicioId } = useParams();
@@ -33,6 +34,8 @@ export const Bills = () => {
 
   const [confirmConfig, setConfirmConfig] = useState(null);
   const [confirmLoading, setConfirmLoading] = useState(false);
+
+  useDocumentTitle(`Facturas de ${servicioInfo?.nombre}`);
 
   useEffect(() => {
     let ignorarRespuesta = false;
