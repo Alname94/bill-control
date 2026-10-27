@@ -8,6 +8,8 @@
 
 App Full-Stack desarrollada para la administración integral de servicios del hogar y el control de vencimientos y pagos de facturas. Permite gestionar servicios y facturas con control de estados y autenticación segura por usuario.
 
+![Demo del Sistema](./backend/docs/bill-control-demo.gif)
+
 ---
 
 # 🌐 Despliegue en Producción
